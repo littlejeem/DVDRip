@@ -54,7 +54,7 @@ if [ "" == "$problem" ]; then
 fi 
  
 #Start sound-juicer 
-sound-juicer 
+abcde
  
 ###############################
 ### START ALAC CONVERSION ### 
