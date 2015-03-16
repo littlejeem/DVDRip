@@ -15,10 +15,13 @@
 
 
 #Set the base directory 
+sBASEDIR="~/Music/"
  
 #Set directory sound juicer rips to 
+sIN="flac"
  
 #Set directory ALAC files are placed in 
+sOUTALAC="AutoAddiTunes"
  
 #Set directory converted FLAC files are placed in 
 sOUTFLAC="Processed" 
