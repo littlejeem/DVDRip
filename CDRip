@@ -1,16 +1,16 @@
 #!/bin/bash 
-#This script rips CDs to FLAC using abcde 
-#It then converts them to ALAC for iTunes and HomeSharing using FAAC 
-#It keeps the FLAC and .m4a files
-#It uses beets audio library manager to tag both sets of files and write fil names
-#It then uses rsync to move files to useful directory's
-#Asks Kodi to update its library
-#Exits
+#This script rips CDs to FLAC using sound-juicer 
+#It then converts them to ALAC for iTunes and HomeSharing 
+#It translates the FLAC metadata to the ALAC metadata format 
+#It also retains the original FLAC file for prosperity 
+ 
 
 ##############################
 ### SET YOUR PARAMETERS ### 
 ############################## 
  
+
+
 #Set the base directory 
 sBASEDIR="/home/jlivin25/Music/" 
  
@@ -23,6 +23,8 @@ sOUTALAC="AutoAddiTunes"
 #Set directory converted FLAC files are placed in 
 sOUTFLAC="Processed"
  
+
+
 ###################################
 ### DO NOT EDIT BELOWTHIS LINE ###
 ###################################
@@ -79,13 +81,11 @@ sOUTFLAC="Processed"
 rm -r ~/Music/AutoAddiTunes
 rm -r ~/Music/Processed
 rm ~/Music/musiclibrary.blb
-#Start abcde and tell it to use as many processor cores as poss, thanks go to Jim Vanns
 abcde -j `getconf _NPROCESSORS_ONLN`
-#
 ###############################
 ### START ALAC CONVERSION ### 
 ###############################
-#
+ 
 #Set up some directory paths based on the variables 
 sINPATH="$sBASEDIR""$sIN" 
 sOUTALACPATH="$sBASEDIR""$sOUTALAC" 
@@ -156,35 +156,32 @@ for FOLDER in $sINPATH/*
     do 
     rm -r "$FOLDER" 
     done 
-###############################
-### START LIBRARY WORK      ### 
-###############################
-#
-#start beets audio manager and ask it to look in the AutoAddiTunes folder and tag files there
-beet import ~/Music/AutoAddiTunes
-# 
+#start beets audio manager and ask it to look in the AutoAddiTunes folder
+beet import ~/Music/AutoAddiTunes 
 rsync -avrv ~/Music/AutoAddiTunes/ /media/Data_1/Music/correct/Albums
-#
 rm -r ~/Music/AutoAddiTunes
-#
 rm ~/Music/musiclibrary.blb
-#
 beet import ~/Music/Processed
-#
 rsync -avrv ~/Music/AutoAddiTunes/ /media/Data_1/Music/FLAC_Backups
 #rsync -avrv  /media/Data_1/Music/correct/Albums
-#
 rm -r ~/Music/Processed
-#
 rm -r ~/Music/AutoAddiTunes
-#
 rm ~/Music/musiclibrary.blb
 #
+#
 # ask kodi to update music library
-curl --data-binary '{ "jsonrpc": "2.0", "method": "AudioLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://localhost:8080/jsonrpc
+# curl --data-binary '{ "jsonrpc": "2.0", "method": "AudioLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://localhost:8080/jsonrpc
 # source for above come from http://kodi.wiki/view/HOW-TO:Remotely_update_library , changed port to my own, control of other systems must be on and webserver
 #
-###########
-### END ### 
-###########
+# above command works, it updates the library but new music doesn't 'appear' in the kodi library, this only works when you use the guid to go into non library
+# mode click on 'scan media to library', can the command below be amended to do this.....??
+# curl -i -X POST -d "{\"jsonrpc\": \"2.0\", \"method\": \"VideoLibrary.Scan\",\"params\": {\"directory\": \"smb://KUROSH-NAS/Kurosh-NAS/Kurosh/Music/\"}, \"id\": 1}" -H "content-type:application/json" http://xbmc:xbmc@localhost:8080/jsonrpc
+# command from this forum  http://forum.kodi.tv/showthread.php?tid=154126
+# something like this?
+# curl -i -X POST -d "{\"jsonrpc\": \"2.0\", \"method\": \"AudioLibrary.Scan\",\"params\": {\"directory\": \"/Media/Data_1/Music/correct/Albums/\"}, \"id\": 1}" -H "content-type:application/json" http://xbmc:xbmc@localhost:8080/jsonrpc
+# now got command working so made seperate scripy called UpdateKodiMusic
+./myscripts/UpdateKodiMusic
+#
+# exit the script
 exit;
+#
