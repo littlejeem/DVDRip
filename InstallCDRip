@@ -1,54 +1,69 @@
-###################################
-### DO NOT EDIT BELOWTHIS LINE ###
-###################################
 #
-Check and install flac 
-problem=$(dpkg -s flac|grep installed) 
-echo "Checking for flac: $problem" 
-if [ "" == "$problem" ]; then 
-     echo "No flac. Setting up flac" 
-     sudo apt-get --force-yes --yes install flac 
-fi 
-# 
-Check and install ffmpeg 
-problem=$(dpkg -s ffmpeg|grep installed) 
-echo "Checking for ffmpeg: $problem" 
-if [ "" == "$problem" ]; then 
-      echo "No ffmpeg. Setting up ffmpeg" 
-      sudo apt-get --force-yes --yes install ffmpeg 
-fi 
-# 
-Check and install abcde 
-problem=$(dpkg -s abcde|grep installed) 
-echo "Checking for abcde: $problem" 
-if [ "" == "$problem" ]; then 
-      echo "No abcde. Setting up abcde" 
-      sudo apt-get --force-yes --yes install abcde 
-fi 
+##############################
+### CHECK AND INSTALL FLAC ###
+##############################
 #
-Check and install python-dev & python pip
-problem=$(dpkg -s python-dev python-pip|grep installed) 
-echo "Checking for python-dev & pyhton-pip: $problem" 
-if [ "" == "$problem" ]; then 
-      echo "No python-dev or python-pip. Setting up python-dev" 
-      sudo apt-get --force-yes --yes install python-dev python-pip 
-fi 
-#
-Check and install beets music manager 
-problem=$(dpkg -s beets|grep installed) 
-echo "Checking for beets: $problem" 
-if [ "" == "$problem" ]; then 
-      echo "No beets. Setting up beets" 
-      sudo pip install beets 
+problem=$(dpkg -s flac|grep installed)
+echo "Checking for flac: $problem"
+if [ "" == "$problem" ]; then
+     echo "No flac. Setting up flac"
+     sudo apt-get --force-yes --yes install flac
 fi
-#sudo pip install beets
+#
+################################
+### CHECK AND INSTALL FFMPEG ###
+################################
+#
+problem=$(dpkg -s ffmpeg|grep installed)
+echo "Checking for ffmpeg: $problem"
+if [ "" == "$problem" ]; then
+      echo "No ffmpeg. Setting up ffmpeg"
+      sudo apt-get --force-yes --yes install ffmpeg
+fi
+#
+###############################
+### CHECK AND INSTALL ABCDE ###
+###############################
+#
+problem=$(dpkg -s abcde|grep installed)
+echo "Checking for abcde: $problem"
+if [ "" == "$problem" ]; then
+      echo "No abcde. Setting up abcde"
+      sudo apt-get --force-yes --yes install abcde
+fi
+#
+#################################################
+### CHECK AND INSTALL PYTHON-DEV & PYTHON-PIP ###
+#################################################
+#
+problem=$(dpkg -s python-dev python-pip|grep installed)
+echo "Checking for python-dev & pyhton-pip: $problem"
+if [ "" == "$problem" ]; then
+      echo "No python-dev or python-pip. Setting up python-dev"
+      sudo apt-get --force-yes --yes install python-dev python-pip
+fi
+#
+#############################################
+### CHECK AND INSTALL BEETS MUSIC MANAGER ###
+#############################################
+#
+Check and install beets music manager
+problem=$(dpkg -s beets|grep installed)
+echo "Checking for beets: $problem"
+if [ "" == "$problem" ]; then
+      echo "No beets. Setting up beets"
+      sudo pip install beets
+fi
+#
+##############################################################
+### CHECK AND INSTALL BEETS ACOUSTIC FINGERPRINT EXTENSION ###
+##############################################################
 #
 Check and install beets extension acoustic fingerprint
-problem=$(dpkg -s pyacoustid|grep installed) 
-echo "Checking for acoustid: $problem" 
-if [ "" == "$problem" ]; then 
-      echo "No acoutsic fingerprint extension. Setting up pyacoustid" 
+problem=$(dpkg -s pyacoustid|grep installed)
+echo "Checking for acoustid: $problem"
+if [ "" == "$problem" ]; then
+      echo "No acoutsic fingerprint extension. Setting up pyacoustid"
       sudo pip install pyacoustid
 fi
-# sudo pip install pyacoustid
 #
