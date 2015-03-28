@@ -1,8 +1,21 @@
 !/bin/bash
-
+#
+##################################
+### SET PARAMETERS FOR COMMAND ###
+##################################
+#
 USERNAME=kodi
 PASSWORD=kodi
 SERVER=192.168.0.2
 PORT=8080
-
+#
+##############################################
+### USE JSON RPC TO REQUEST LIBRARY UPDATE ###
+##############################################
+#
 wget --user=$USERNAME --password=$PASSWORD --header='Content-Type: application/json' --post-data='{"jsonrpc": "2.0", "method": "AudioLibrary.Scan"}' http://$SERVER:$PORT/jsonrpc -O /dev/null
+#
+# The above command works, the music library updates, however not all newley ripped cd's are bing picked up on a scan...
+# .... the missing cd's not picked up are if you manually re-scan file's location location to library.
+#
+# END OF FILE
