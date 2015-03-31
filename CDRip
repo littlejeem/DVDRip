@@ -1,11 +1,15 @@
 !/bin/bash
 #
-############################################################
-###      THIS SCRIPT RIPS CD'S TO FLAC USING ABCDE       ###
-###   THEN USES FAAC TO M4A ALAC FOR ITUNES / IPOD USE   ###
-### SCRIPT USES BEETS MEDIA MANAGER TO TAG FILES INC ART ###
-###    IT ALSO RETAINS THE FLAC FILE FOR PROSPERITY      ###
-############################################################ 
+#
+#
+#################################################################################################
+###                         THIS SCRIPT RIPS CD'S TO FLAC USING ABCDE                         ###
+###                      THEN USES FAAC TO M4A ALAC FOR ITUNES / IPOD USE                     ###
+###                    SCRIPT USES BEETS MEDIA MANAGER TO TAG FILES INC ART                   ###
+###                       IT ALSO RETAINS THE FLAC FILE FOR PROSPERITY                        ###
+###                                    CREDIT GOES TO HERE:                                   ###
+### http://confoundedtech.blogspot.co.uk/2011/11/ubuntu-automatically-rip-cd-to-flac-and.html ###
+################################################################################################# 
 #
 ##############################
 ### Set the base directory ###
