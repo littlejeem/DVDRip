@@ -1,0 +1,49 @@
+#!/bin/bash
+#This script is call by udev on cd detection to run the CDRip script under the X session of the main user
+#file location /usr/local/bin/DiscTypeTest
+#udev/rules.d/80-AutoDisc.rules points to this program which in turn points to CDRip
+#so: disc inserted -> udev spots change -> calls 80-AutoDiscs.rules -> calls CDTest -> calls CDRip
+#Remove the old log from the previous run
+#rm /home/jlivin25/myscripts/CDTest.log
+#
+#Check for CD presence
+sleep 2 # in seconds, e.g 5 minutes = 5 * 60 seconds = 300 seconds
+if [ "$ID_CDROM_MEDIA_CD" == "" ]
+        then
+         false
+         echo "AUDIO TEST - No DISC detected" >> /home/jlivin25/myscripts/CDTest.log
+        else
+                #Check whether CD is a media CD
+                if [ $ID_CDROM_MEDIA == "1" ]
+                        then
+                         true # This is True for a CD Audio. Data disk?
+                         echo "$(date "+%b_%d_%Y") - Audio CD - ripping started" >> /home/jlivin25/myscripts/CDTest.log
+                         #Call CD Rip script in the user x environment
+                         #
+                         #set -x
+                         #xhost local:USERNAME
+                         #export DISPLAY=:0.0
+                         #At last Run the custom CD script
+                         nohup ./home/jlivin25/myscripts/CDRip &
+                         echo "$(date "+%b_%d_%Y") - Audio CD - ripping complete" >> /home/jlivin25/myscripts/CDTest.log
+                fi
+fi
+#
+#removed DVD segment for testing purposes 15.04.15
+#
+#Check for DVD presence
+#ID_CDROM_MEDIA_DVD=1
+#if [ "$ID_CDROM_MEDIA_DVD" == "" ]
+#       then
+#        false
+#         echo "$(date "+%b_%d_%Y") - DVD Test - No DISC detected" >> /home/jlivin25/myscripts/CDTest.log
+#        exit 0
+#       else
+#       #Check whether DVD is a media DVD
+#               if [ $ID_CDROM_MEDIA_DVD == "1" ]
+#                       then
+#                       true # This is True for a DVD Video. Data disk?
+#                       echo "$(date "+%b_%d_%Y") - DVD Test - DVD detected" >> /home/jlivin25/myscripts/CDTest.log
+#                       exit 0
+#fi
+exit 0
