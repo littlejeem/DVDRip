@@ -32,17 +32,17 @@ then
         MEDIA=bluray
         (
         echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
-        )
+        ) &
 elif [ "$ID_CDROM_MEDIA_DVD" = "1" ]
 then
         MEDIA=dvd
         (
         echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
-        )
+        ) &
 elif [ "$ID_CDROM_MEDIA_CD" = "1" ]
 then
         MEDIA=cdrom
         (
         echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
-        )
+        ) &
 fi
