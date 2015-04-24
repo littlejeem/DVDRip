@@ -24,6 +24,9 @@ sleep 2
 #
 #
 #
+
+mkdir -p $HOME/myscripts/scriptlogs
+
 if [ "$ID_CDROM_MEDIA_BD" = "1" ]
 then
         MEDIA=bluray
