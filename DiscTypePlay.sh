@@ -28,7 +28,7 @@ if [ "$ID_CDROM_MEDIA_BD" = "1" ]
 then
         MEDIA=bluray
         (
-        echo "MEDIA" >> /$HOME/myscripts/scriptlogs/DiscTypePlay.log
+        echo "$MEDIA" >> /$HOME/myscripts/scriptlogs/DiscTypePlay.log
         )
 elif [ "$ID_CDROM_MEDIA_DVD" = "1" ]
 then
