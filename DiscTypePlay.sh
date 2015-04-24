@@ -41,8 +41,6 @@ then
         )
 elif [ "$ID_CDROM_MEDIA_CD" = "1" ]
 then
-#       NO_MOUNT=1
-#       NO_EJECT=1
         MEDIA=cdrom
         (
         echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
