@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -eu
+
 # code below is derived from work by JimVanns, thanks
 # https://github.com/jvanns/htpc/blob/master/dsc-trg-q
 #
