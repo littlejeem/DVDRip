@@ -28,13 +28,13 @@ if [ "$ID_CDROM_MEDIA_BD" = "1" ]
 then
         MEDIA=bluray
         (
-        echo "$MEDIA" >> /$HOME/myscripts/scriptlogs/DiscTypePlay.log
+        echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
         )
 elif [ "$ID_CDROM_MEDIA_DVD" = "1" ]
 then
         MEDIA=dvd
         (
-        echo "$MEDIA" >> /$HOME/myscripts/scriptlogs/DiscTypePlay.log
+        echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
         )
 elif [ "$ID_CDROM_MEDIA_CD" = "1" ]
 then
@@ -42,6 +42,6 @@ then
 #       NO_EJECT=1
         MEDIA=cdrom
         (
-        echo "$MEDIA" >> /$HOME/myscripts/scriptlogs/DiscTypePlay.log
+        echo "$MEDIA" >> $HOME/myscripts/scriptlogs/DiscTypePlay.log
         )
 fi
