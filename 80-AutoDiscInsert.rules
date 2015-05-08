@@ -1,5 +1,0 @@
-# file location /etc/udev/rules.d/80-AutoDiscDetect.rules
-#below rule was part of development and wokrs for my jumpdrives, usefull for camera functionality?
-# ACTION=="add", SUBSYSTEMS=="usb", ATTRS{product}=="JumpDrive", ATTRS{serial}=="2351046040", MODE="0660", GROUP="tty", SYMLINK+="pendrive", RUN+="/usr/local/bin/CDTest2"
-# rule below works for TSSCorp USB DVD writer
-ACTION=="change", SUBSYSTEMS=="scsi", KERNEL=="s[rg][0-9]*", ATTRS{vendor}=="TSSTcorp", MODE="0660", GROUP="optical", RUN+="/home/jlivin25/myscripts/DiscTypeTest.sh"
