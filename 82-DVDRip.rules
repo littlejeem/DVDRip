@@ -1,4 +1,0 @@
-# ID_CDROM_MEDIA_BD = Bluray
-# ID_CDROM_MEDIA_DVD = DVD
-# ID_CDROM_MEDIA_CD = CD
-ACTION=="change", SUBSYSTEMS=="scsi", KERNEL=="sr0", ENV{ID_CDROM_MEDIA_DVD}=="1", RUN+="/usr/local/bin/DVDRip.sh"
